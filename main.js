@@ -4,26 +4,29 @@ function Vehicle(){
     throw new Error("abstract")
 }
 Vehicle.prototype.name
-Vehicle.prototype.showName 
+Vehicle.prototype.showName =  function (){
+    throw new Error("method showName should be implemented")
+}
 Vehicle.prototype.color
-Vehicle.prototype.showColor
+Vehicle.prototype.showColor = function (){
+    throw new Error("method showColor should be implemented")
+}
 
 // let veh = new Vehicle()
 // implement method of abstract class
-function Car(name){
+function Car(name, cl){
     this.name = name
-    this.color
+    let color = cl
     this.showName = function(){
         console.log("name is ", this.name)
     }
     this.showColor = function(){
-        console.log("color is", this.color)
+        console.log("color is", color)
     }
 }
 
 Car.prototype = Object.create(Vehicle.prototype)
 
-let toyota = new Car("toyota")
+let toyota = new Car("toyota", "red")
 toyota.showName()
-toyota.color = "red"
 toyota.showColor()
